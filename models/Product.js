@@ -10,16 +10,19 @@ class Product extends Model {}
 Product.init(
   {
     id: {
+      //integer, can't be null, set as primary key, id auto increments
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     product_name: {
+      //string that can't be null
       type: DataTypes.STRING,
       allowNull: false,
     },
     price: {
+      //Number which must be a decimal, can't be null
       type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
@@ -27,6 +30,7 @@ Product.init(
       },
     },
     stock: {
+      //integer, can't be null, if not set then auto is 10
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10,
@@ -35,6 +39,7 @@ Product.init(
       },
     },
     category_id: {
+      //integer that references the id from the customer table
       type: DataTypes.INTEGER,
       references: {
         model: "category",
